@@ -39,7 +39,7 @@ currency_service/
 ```
 
 ## Структура базы данных
-
+### База данных currencyDB
 ### Таблица rates
 - cur_id (INT, PRIMARY KEY)
 - abbreviation (VARCHAR(10))
