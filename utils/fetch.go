@@ -1,21 +1,13 @@
 package utils
 
 import (
+	"currency_service/models"
 	"encoding/json"
 	"io"
 	"net/http"
 )
 
-type Rate struct {
-	Cur_ID           int
-	Date             string
-	Cur_Abbreviation string
-	Cur_Scale        int
-	Cur_Name         string
-	Cur_OfficialRate float64
-}
-
-func FetchRates() ([]Rate, error) {
+func FetchRates() ([]models.Rate, error) {
 	resp, err := http.Get("https://api.nbrb.by/exrates/rates?periodicity=0")
 	if err != nil {
 		return nil, err
@@ -27,7 +19,7 @@ func FetchRates() ([]Rate, error) {
 		return nil, err
 	}
 
-	var rates []Rate
+	var rates []models.Rate
 	if err := json.Unmarshal(body, &rates); err != nil {
 		return nil, err
 	}

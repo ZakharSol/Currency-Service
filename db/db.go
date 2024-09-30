@@ -1,6 +1,7 @@
 package db
 
 import (
+	"currency_service/models"
 	"currency_service/utils"
 	"database/sql"
 	"log"
@@ -45,7 +46,7 @@ func FetchAndSaveRates(db *sql.DB) error {
 		existingRates[curID] = struct{}{}
 	}
 
-	uniqueRates := make(map[int]utils.Rate)
+	uniqueRates := make(map[int]models.Rate)
 
 	for _, rate := range rates {
 		curID := rate.Cur_ID
